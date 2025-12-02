@@ -3,6 +3,12 @@
 <img width="300" height="300" alt="DigitalDetox_icon" src="https://github.com/user-attachments/assets/49227449-3175-4d9e-b76d-8e30787c68ac" />
 
 
+## TestFlight
+
+The app is available for testing through TestFlight:
+
+**Public Link:** https://testflight.apple.com/join/jAKGnsTc  
+*(External build is still awaiting Apple review — link will activate once approved.)*
 
 This app is inspired by the book Digital Minimalism by Cal Newport.
 
