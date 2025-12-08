@@ -69,12 +69,34 @@ enum Constants {
     }
 }
 
+struct Container<Content: View>: View {
+    var content: Content
+    
+    init(
+        @ViewBuilder content: @escaping () -> Content
+    ) {
+        self.content = content()
+    }
+    
+    var body: some View {
+        if #available(iOS 16.0, *) {
+            NavigationStack {
+                content
+            }
+        } else {
+            NavigationView {
+                content
+            }
+        }
+    }
+}
+
 struct ContentView: View {
     
     @State private var screen: Screen = .start
 
     var body: some View {
-        NavigationStack {
+        Container {
             ZStack {
                 BackgroundView()
                 switch screen {

@@ -10,14 +10,38 @@ import SwiftUI
 enum Constants {
     static func haptic(_ type: WKHapticType = .start) {
         WKInterfaceDevice.current().play(type)
-    }}
+    }
+}
+
+struct Container<Content: View>: View {
+    var content: Content
+    
+    init(
+        @ViewBuilder content: @escaping () -> Content
+    ) {
+        self.content = content()
+    }
+    
+    var body: some View {
+        if #available(watchOS 9.0, *) {
+            NavigationStack {
+                content
+            }
+        } else {
+            NavigationView {
+                content
+            }
+        }
+    }
+}
+
 
 struct ContentView: View {
     
     @State private var startedBreathing = false
     
     var body: some View {
-        NavigationStack {
+        Container {
             ZStack {
                 BackgroundView()
                 if startedBreathing {
